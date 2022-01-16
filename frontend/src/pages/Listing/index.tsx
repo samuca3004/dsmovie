@@ -8,13 +8,17 @@ import { BASE_URL } from "utils/requests";
 
 function Listing() {
 
+    
     const [pageNumber, setPageNumber] = useState(0);
+    
     useEffect(() => {
 
-        axios.get(`${BASE_URL}/movies?size=12&page=0`)
-    .then(response =>{
-        const data = response.data as MoviePage;
-        setPageNumber(data.number);
+        axios.get(`${BASE_URL}/movies?size=12&page=1`)
+        .then(response => {
+            const data = response.data as MoviePage;
+            console.log(data);
+            setPageNumber(data.number);
+
     });
 
     }, []);
@@ -24,6 +28,7 @@ function Listing() {
     return (
 
         <>
+            <p>{pageNumber}</p>
             <Pagination />
 
             <div className="container">
@@ -66,6 +71,4 @@ function Listing() {
 
 export default Listing;
 
-function setPageNumberumber(number: number) {
-    throw new Error("Function not implemented.");
-}
+
